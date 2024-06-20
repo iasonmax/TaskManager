@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerWeb", "TaskManager.Web\TaskManagerWeb.csproj", "{5A16CC4E-FEC4-44BD-8A40-62CC286A997A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{523B755B-3968-4A68-A946-C3A23B1A2717} = {523B755B-3968-4A68-A946-C3A23B1A2717}
+		{6902C177-DA65-4ACC-A64F-510F6A2353F3} = {6902C177-DA65-4ACC-A64F-510F6A2353F3}
+		{8199622C-A5B1-4F41-86D5-13E8B002F79D} = {8199622C-A5B1-4F41-86D5-13E8B002F79D}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerWeb.DataAccess", "TaskManagerWeb.DataAccess\TaskManagerWeb.DataAccess.csproj", "{6902C177-DA65-4ACC-A64F-510F6A2353F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerWeb.DataAccess", "TaskManagerWeb.DataAccess\TaskManagerWeb.DataAccess.csproj", "{6902C177-DA65-4ACC-A64F-510F6A2353F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerWeb.Models", "TaskManagerWebModels\TaskManagerWeb.Models.csproj", "{523B755B-3968-4A68-A946-C3A23B1A2717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerWeb.Models", "TaskManagerWebModels\TaskManagerWeb.Models.csproj", "{523B755B-3968-4A68-A946-C3A23B1A2717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerWeb.Utility", "TaskManagerWeb.Utility\TaskManagerWeb.Utility.csproj", "{8199622C-A5B1-4F41-86D5-13E8B002F79D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerWeb.Utility", "TaskManagerWeb.Utility\TaskManagerWeb.Utility.csproj", "{8199622C-A5B1-4F41-86D5-13E8B002F79D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

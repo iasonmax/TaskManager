@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿#nullable disable
 
-#nullable disable
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TaskManager.Web.Migrations
+namespace TaskManagerWeb.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTableCorrectly : Migration

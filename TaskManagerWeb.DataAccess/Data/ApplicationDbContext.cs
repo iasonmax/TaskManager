@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaskManager.Web.Models;
+using TaskManagerWeb.Models;
 
-namespace TaskManager.Web.Data
+namespace TaskManagerWeb.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext 
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<Category> Categories { get; set; }
