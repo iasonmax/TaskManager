@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskManagerWeb.DataAccess.Data;
+using TaskManagerWeb.DataAccess.Repository.IRepository;
 using TaskManagerWeb.Models;
 
 namespace TaskManager.Web.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork db)
         {
-            _db = db;
+            _unitOfWork = db;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -31,8 +31,8 @@ namespace TaskManager.Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
@@ -46,7 +46,7 @@ namespace TaskManager.Web.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -58,21 +58,21 @@ namespace TaskManager.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View();
 
         }
-        //Edit
+        //Delete
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -82,14 +82,14 @@ namespace TaskManager.Web.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteCategory(int? id)
         {
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
 
             if (categoryFromDb == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(categoryFromDb);
-            _db.SaveChanges();
+            _unitOfWork.Category.Delete(categoryFromDb);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
 
         }
